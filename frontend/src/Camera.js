@@ -68,7 +68,7 @@ function CameraWrapper(props) {
       }));
       console.log(results);
       setProducts(results);
-      setProduct(products[0]);
+      setProduct(results[0]);
       setPrice(parsePrice(text));
       setText(text);
     })
