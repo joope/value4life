@@ -9,6 +9,12 @@ router.get('/', async (req, res, next) => {
   res.send(products);
 });
 
+router.post('/', async (req, res, next) => {
+  console.log('create new')
+  const newItem = await ProductSchema.create(req.body).catch((err) => console.log('err creating ', err));
+  return res.json(newItem);
+})
+
 
 router.post('/search', async (req, res, next) => {
   const { query } = req.body;
