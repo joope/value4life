@@ -12,9 +12,9 @@ const mongoose = require('mongoose');
 
 var app = express();
 
+mongoose.set('useCreateIndex', true);
 mongoose.connect('mongodb://localhost/test');
 const db = mongoose.connection;
-
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -22,6 +22,7 @@ db.once('open', function() {
   // we're connected!
 });
 
+app.use(express.json()); //Used to parse JSON bodies
 
 app.use(logger('dev'));
 app.use(express.json());
