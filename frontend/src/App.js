@@ -3,12 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 import Camera from './Camera';
 
+import { Router } from "@reach/router"
+import Home from './Home';
+
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">Scanner</header>
-      <Camera />
-    </div>
+    <Router>
+      <Home path="/" />
+      <Camera path="/camera" />
+    </Router>
   );
 }
 

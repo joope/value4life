@@ -1,5 +1,9 @@
-.App {
+body {
   text-align: center;
+  background: #5b7cc5;  
+  /* #F8777D; */
+  color: white;
+  font-size: 24px;
 }
 
 .App-logo {
@@ -7,13 +11,12 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 32px;
   color: white;
 }
 
@@ -21,9 +24,46 @@
   color: #09d3ac;
 }
 
+.home-button {
+  position: absolute;
+  right: 14px;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+form {
+  padding: 24px;
+}
+
+form input {
+  display: block;
+  width: 100%;
+}
+
+input[type="submit"]{
+  margin: 14px auto;
+  background: white;
+  border-radius: 14px;
+  text-transform: uppercase;
+  border: none;
+}
+
+#container-circles {
+  position: relative;
+  top: -70px;
+}
+
 #inner-circle {
   margin: 0 auto;
   width: 50px;
   height: 50px;
   background: red;
+  border-radius: 50%;
 }
+
+.react-html5-camera-photo, video {
+  height: 50vh;
+}
+
