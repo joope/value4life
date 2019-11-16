@@ -11,7 +11,8 @@ const schema = new Schema({
 });
 
 
+schema.index({name: 'text'})
 
 const ProductSchema = mongoose.model('Product', schema);
 
-module.exports = { ProductSchema }
+module.exports = { ProductSchema}
