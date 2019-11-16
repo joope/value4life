@@ -52,8 +52,10 @@ function CameraWrapper(props) {
   const [timespan, setTimespan] = useState(timespanOptions[2]);
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const recognize = (dataUrl) => {
+    setLoading(true);
     Tesseract.recognize(
       dataUrl,
       'eng',
@@ -71,6 +73,7 @@ function CameraWrapper(props) {
       setProduct(results[0]);
       setPrice(parsePrice(text));
       setText(text);
+      setLoading(false);
     })
   }
 
@@ -89,6 +92,7 @@ function CameraWrapper(props) {
         onTakePhoto = { (dataUri) => { recognize(dataUri) } }
       />
       <form onSubmit={submit}>
+        {loading && <div className="spinner">Searching products...</div>}
         <div>
           {/* <label>Product: </label> */}
           <Select 
