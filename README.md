@@ -17,3 +17,26 @@ Electronics, mobile device, car, furniture
 - Browser extension
 
 Tieto intro song
+
+
+# How to get backend up and running
+
+### Mongo
+
+Install mongo globally https://docs.mongodb.com/manual/administration/install-community/
+
+Or run in docker
+
+```
+mkdir ~/data
+sudo docker run -d -p 27017:27017 -v ~/data:/data/db mongo
+```
+
+### Node
+
+Install node
+
+```
+npm i -g nodemon
+
+```
