@@ -1,18 +1,27 @@
 import React, {useState} from 'react';
 import Camera from 'react-html5-camera-photo';
+import Tesseract from 'tesseract.js';
 
 function CameraWrapper(props) {
   const [value, setValue] = useState();
 
   const recognize = (dataUrl) => {
-    window.Tesseract.recognize(
+    // console.log('data', dataUrl)
+    Tesseract.recognize(
       dataUrl,
-      'fi',
+      'eng',
       { logger: m => console.log(m) }
-    ).then(({ data: { text } }) => {
-      console.log(text);
-      setValue(text);
+    ).then((data) => {
+      console.log(data);
     })
+    // Tesseract.recognize(
+    //   Buffer.from(dataUrl, 'base64'),
+    //   'fi',
+    //   { logger: m => console.log(m) }
+    // ).then(({ data }) => {
+    //   console.log('results ', data);
+    //   // setValue(text);
+    // }).catch((err) => console.log('terr ', err));
   }
 
   return (
@@ -20,7 +29,8 @@ function CameraWrapper(props) {
       <h1>Upload</h1>
       <div>{value}</div>
       <Camera
-          onTakePhoto = { (dataUri) => { recognize(dataUri) } }
+        isImageMirror={false}
+        onTakePhoto = { (dataUri) => { recognize(dataUri) } }
       />
     </div>
   )
