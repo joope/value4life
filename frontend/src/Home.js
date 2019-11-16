@@ -31,6 +31,14 @@ function Home() {
         />
         <input type="submit" value="Continue" />
       </form>
+
+      <div>
+        <h1>Existing monthly expenses</h1>
+        <ul>
+            <li>Student lunches - 52€/month</li>
+            <li>Spotify - 5€/month</li>
+        </ul>
+      </div>
     </div>
     
   )

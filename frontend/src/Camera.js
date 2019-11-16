@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Camera from 'react-html5-camera-photo';
+import Camera, { FACING_MODES } from 'react-html5-camera-photo';
 import Tesseract from 'tesseract.js';
 import { Link } from "@reach/router";
 import Select from 'react-select';
@@ -85,6 +85,7 @@ function CameraWrapper(props) {
     <div>
       <Link to="/" className="home-button">X</Link>
       <Camera
+        idealFacingMode = {FACING_MODES.ENVIRONMENT}
         isImageMirror={false}
         onTakePhoto = { (dataUri) => { recognize(dataUri) } }
       />
