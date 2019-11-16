@@ -3,6 +3,10 @@ import Camera from 'react-html5-camera-photo';
 import Tesseract from 'tesseract.js';
 import { Link } from "@reach/router";
 
+function calculateMonthlyPrice(price, lifetime){
+  return Math.ceil(price / lifetime)
+}
+
 function parsePrice(text){
   try {
     const match = text.match(/\d+[\.|\,]*\d{1,2}/gm);
