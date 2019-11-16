@@ -3,6 +3,7 @@ import Camera, { FACING_MODES } from 'react-html5-camera-photo';
 import Tesseract from 'tesseract.js';
 import { Link } from "@reach/router";
 import Select from 'react-select';
+import { navigate } from "@reach/router";
 
 import Fuse from 'fuse.js';
 
@@ -46,11 +47,18 @@ function parsePrice(text){
   }
 }
 
+function getProducts(products) {
+  return products.map(e => ({
+    value: e.name, 
+    label: e.name,
+  }));
+}
+
 function CameraWrapper(props) {
   const [text, setText] = useState('');
   const [price, setPrice] = useState('');
   const [timespan, setTimespan] = useState(timespanOptions[2]);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(getProducts(data));
   const [product, setProduct] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -64,12 +72,8 @@ function CameraWrapper(props) {
       console.log(data);
       const { text } = data;
       const searchTerm = text.substring(0, 20);
-      const results = fuse.search(searchTerm).map(e => ({
-        value: e.name, 
-        label: e.name,
-      }));
+      const results = getProducts(fuse.search(searchTerm))
       console.log(results);
-      setProducts(results);
       setProduct(results[0]);
       setPrice(parsePrice(text));
       setText(text);
@@ -92,7 +96,7 @@ function CameraWrapper(props) {
         isImageMirror={false}
         onTakePhoto = { (dataUri) => { recognize(dataUri) } }
       />
-      <form onSubmit={submit}>
+      <form onSubmit={submit} className="product-form summary1">
         {loading && <div className="spinner">Searching products...</div>}
         <div>
           {/* <label>Product: </label> */}
@@ -124,8 +128,27 @@ function CameraWrapper(props) {
           />
         </div>
         {/* <input type="submit" value="Search" /> */}
+        <h4>Estimated cost:</h4>
+        <h2>{estimatedCost}€/month</h2>
+        {product && price && <h4>&#8964;</h4>}
       </form>
-      <h2>Estimated cost: {estimatedCost}€/month</h2>
+     
+      {product && price && <div>
+        <h1>Summary</h1>
+        <ul className="summary1">
+          <li>{product.value}</li>
+          <li>Your price: {price}€</li>
+          <li>Market price: {(price * 0.96).toFixed(2)}€</li>
+          <li>Estimated resale price: No data</li>
+        </ul>
+        <ul className="summary2">
+          <h1>You could buy</h1>
+          <li>...{(estimatedCost / 10).toFixed(1)} Spotify subscriptions</li>
+          <li>...{(price / 2.6).toFixed(1)} student lunches</li>
+        </ul>
+        <button onClick={() => navigate('/')}>Buy</button>
+      </div>}
+
     </div>
   )
 }

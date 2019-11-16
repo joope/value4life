@@ -6,6 +6,10 @@ body {
   font-size: 24px;
 }
 
+.main-header {
+  padding: 20px;
+}
+
 .App-logo {
   height: 40vmin;
 }
@@ -93,6 +97,35 @@ label {
   width: 100%;
   text-align: left;
 }
+
+.product-form {
+  height: 50vh;
+}
+
+
+ul {
+  padding: 0;
+}
+ul li {
+  list-style-type: none;
+  margin: 0;
+}
+
+.summary1 {
+  border-bottom: 1px solid white;
+  padding-bottom: 14px;
+}
+
+button {
+  border: none;
+  border-radius: 14px;
+  background: green;
+  color: white;
+  margin: 12px;
+  padding: 7px 12px;
+}
+
+
 
 .loader {
   color: #ffffff;
