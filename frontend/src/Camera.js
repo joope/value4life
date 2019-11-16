@@ -10,6 +10,10 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
+function calculateMonthlyPrice(price, lifetime){
+  return Math.ceil(price / lifetime)
+}
+
 function parsePrice(text){
   try {
     const match = text.match(/\d+[\.|\,]\d{1,2}/gm);
