@@ -34,7 +34,7 @@ function Home() {
 
       <div>
         <h1>Existing monthly expenses</h1>
-        <ul>
+        <ul style={{listStyle: 'none'}}>
             <li>Student lunches - 52€/month</li>
             <li>Spotify - 5€/month</li>
         </ul>
