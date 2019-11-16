@@ -2,19 +2,27 @@ import React, {useState} from 'react';
 import Camera from 'react-html5-camera-photo';
 import Tesseract from 'tesseract.js';
 import { Link } from "@reach/router";
+import Select from 'react-select';
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+];
 
 function parsePrice(text){
   try {
-    const match = text.match(/\d+[\.|\,]*\d{1,2}/gm);
+    const match = text.match(/\d+[\.|\,]\d{1,2}/gm);
     return match[0]
   } catch(e) {
-    return '9,99';
+    return 9.99;
   }
 }
 
 function CameraWrapper(props) {
-  const [text='', setText] = useState();
-  const [price='', setPrice] = useState();
+  const [text, setText] = useState('');
+  const [price, setPrice] = useState('');
+  const [timespan, setTimespan] = useState('chocolate');
 
   const recognize = (dataUrl) => {
     Tesseract.recognize(
@@ -42,13 +50,29 @@ function CameraWrapper(props) {
         onTakePhoto = { (dataUri) => { recognize(dataUri) } }
       />
       <form onSubmit={submit}>
-        <div>
+        {/* <div>
           <label>Name: </label>
-          <input type="text" value={text} onChange={(e) => setText(e.target.value)}/>
+          <input 
+            type="text" 
+            value={text} 
+            onChange={(e) => setText(e.target.value)}
+          />
+        </div> */}
+        <div>
+          <input 
+            type="text" 
+            value={price} 
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder="Price"
+          />
         </div>
         <div>
-          <label>Price: </label>
-          <input type="number" step="any" value={price} onChange={(e) => setPrice(e.target.value)}/>
+          <Select 
+            className="selector"
+            value={timespan} 
+            onChange={(value) => setTimespan(value)}
+            options={options}
+          />
         </div>
         <input type="submit" value="Search" />
       </form>

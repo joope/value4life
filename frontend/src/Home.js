@@ -22,7 +22,7 @@ function Home() {
     <div>
       <h1>Welcome!</h1>
       <p>Set your monthly budget:</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="welcome-form">
         <input 
           placeholder={1000}
           type="number" 
