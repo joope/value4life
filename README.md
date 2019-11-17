@@ -1,5 +1,7 @@
 # value4life - *Check Before Checkout!*
-Junction 2019 app
+Junction 2019 app for [Improving your financial future](https://2019.hackjunction.com/challenges/improving-your-financial-future) challenge by Blackrock
+
+![value4life screenshot](/value4life.png)
 
 
 # Planning
