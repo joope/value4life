@@ -4,6 +4,11 @@ Junction 2019 app for [Improving your financial future](https://2019.hackjunctio
 ![value4life screenshot](/value4life.png)
 
 
+## Prototype
+During the hackathon we implemented the layout and initial design for the purchase process. This consists of scanning a product name and price with the phone camera. The scanned image is passed through a simple text recognition process where the resulting text is used to search a product match from the database, while the product price is inputted into a price field. After the process has completed a summary of spending details is displayed in order to help the user in making the purchase decision.
+
+Live demo: http://value4.life
+
 # Planning
 
 ### What is the metric for cost-per-lifetime?
